@@ -68,7 +68,7 @@ public class Rational{
 	    System.out.println("Your divisor has a value of 0. Your rational number cannot be divided.");
 	}
     }
-
+    //Returns the gcd of the numerator and denominator of this Rational
     public static int gcdER (int a, int b) {
 	//From the day Jackie and Victor presented their code for the class
 	if (b==0) {
@@ -77,6 +77,7 @@ public class Rational{
 	return gcdER(b, a % b);
     }
 
+    //Takes 1 Rational object (just like multiply) and adds it to the current rational number object. Need not reduce.
     public void add (Rational m) {
 	int lcm = lcm( denominator, m.denominator);
 	int ratio1 = lcm / denominator;
@@ -86,6 +87,7 @@ public class Rational{
 	denominator = lcm;
     }
 
+    //Works the same as add, except the operation is subtraction
     public void subtract (Rational m) {
 	int lcm = lcm( denominator, m.denominator);
         int ratio1 = lcm / denominator;
@@ -105,7 +107,7 @@ public class Rational{
 	else
 	    return (a*b) / gcdER(a,b);
     }
-
+    //Changes this Rational to one in reduced form (should use gcd)
     public void reduce(){
 	int gcd = this.gcd();
 	int newNum = numerator/gcd;
