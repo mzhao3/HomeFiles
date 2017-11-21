@@ -1,0 +1,123 @@
+/*
+  Maggie Zhao
+  APCS1 pd02
+  HW16 -- Get It While You Can
+  2017-10-14
+*/
+public class Driver
+{
+    
+    public static void main( String[] args )
+    {
+	/*
+	//build Objects from blueprint specified by class Coin
+	
+	//test default constructor
+
+	Coin mine = new Coin();
+
+	//test 1st overloaded constructor
+	Coin yours = new Coin( "quarter" );
+
+	//test 2nd overloaded constructor
+	Coin wayne = new Coin( "dollar", "heads" );
+
+	//test toString() methods of each Coin
+	System.out.println("mine: " + mine);
+	System.out.println("yours: " + yours);
+	System.out.println("wayne: " + wayne);
+	*/
+	/*
+	//test flip() method
+	System.out.println("\nAfter flipping...");
+	yours.flip();
+	wayne.flip();
+	System.out.println("yours: " + yours);
+	System.out.println("wayne: " + wayne);
+
+
+	//test equals() method
+	if ( yours.equals(wayne) ) 
+	System.out.println( "Matchee matchee!" );
+	else
+	System.out.println( "No match. Firestarter you can not be." );
+	*/
+	//	heads(2);
+	//matches(13);
+	overNineThousand();
+    }
+    // 1a coin pair flips and prints summary information until x heads have come up on either coin
+    public static void heads (int x) {
+	Coin harry = new Coin();
+	Coin potter = new Coin();
+	while (harry.headsCtr < x || potter.headsCtr < x) {
+	    System.out.println("Flip #" + harry.flipCtr + ":");
+	    harry.flip();
+	    potter.flip();
+	    System.out.println("Coin 'harry' has landed on " + harry.upFace + ".");
+	    System.out.println("Coin 'harry' has landed on heads " + harry.headsCtr + " times.");
+	    System.out.println("Coin 'potter' has landed on " + potter.upFace + ".");
+	    System.out.println("Coin 'potter' has landed on heads " + potter.headsCtr + " times.");
+	    System.out.println("\n----------------------------------------");
+	}
+    }
+	
+    // 1b coin pair flips and prints summary information until y matches have occurred
+    public static void matches (int y) {
+	int matches = 1;
+	Coin apple = new Coin();
+	Coin banana = new Coin();
+	while (matches <= y) { 
+	    System.out.println("Flip #" + apple.flipCtr + ":");
+	    apple.flip();
+	    banana.flip();
+	    System.out.println("///////////////////////////");
+	    if (apple.equals(banana)){
+		System.out.println("Matchee matchee!");
+		System.out.println("Coins 'apple' and 'banana' have matched " + matches+ " times.\n");
+		matches += 1;
+	    }
+	    else {
+		System.out.println("Coin 'apple' has landed on "+ apple.upFace+".");
+		System.out.println("Coin 'banana' has landed on "+banana.upFace + ".");
+		System.out.println( "No match. Firestarter you can not be.\n" ); 
+	    }
+	}
+    }
+    // 1c coin pair flips until at least 13000 matches have come up. and the number of matches is divisible by the year of your birth
+
+    
+    public static void overNineThousand () {
+	int matches = 0;
+	Coin cookie = new Coin();
+	Coin dough = new Coin();
+	while (matches <= 13000){
+	    System.out.println("Flip #" + cookie.flipCtr + ":");
+	    cookie.flip();
+	    dough.flip();
+	    if (cookie.equals(dough)){
+		matches += 1;
+		System.out.println("Matchee matchee!");
+		System.out.println("Coins 'cookie' and 'dough' have matched " + matches+ " times.\n");
+	    }
+	    else {
+		System.out.println("Coins 'cookie' and 'dough' do not match. Flip again!");
+	    }
+	}
+	while (matches > 13000 && (matches %2001) != 0) {
+	    System.out.println("Flip #" + cookie.flipCtr + ":");
+	    cookie.flip();
+	    dough.flip();
+	    if (cookie.equals(dough)){
+                matches += 1;
+                System.out.println("Matchee matchee!");
+                System.out.println("Coins 'cookie' and 'dough' have matched " + matches+ " times.\n");
+            }
+            else {
+                System.out.println("Coins 'cookie' and 'dough' do not match. Flip again!\n");
+            }
+        }
+    }
+	    
+		 
+}//end class

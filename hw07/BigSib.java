@@ -1,0 +1,26 @@
+/*
+Maggie Zhao
+APCS1 pd2
+HW07- On the Origins of a BigSib
+2017-09-26
+*/
+
+public class BigSib {
+    private String helloMsg;
+    public BigSib() { 
+	helloMsg = "Welcome" ;
+    }
+    public BigSib(String newMsg){
+	helloMsg = newMsg;
+    }
+    
+    public String greet (String name) {
+
+	String result;
+	result = helloMsg;
+	result += " ";
+	result += name;
+	return result; 
+
+    }
+}

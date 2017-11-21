@@ -1,0 +1,15 @@
+public class Test{
+    public static void countDown (int n){
+	for ( int x =n; x >= 0; x --){
+	    System.out.println(x);
+	}
+	System.out.println("Countdown!");
+    }
+    public static void main (String [] args) {
+	countDown(2);
+	countDown(99);
+	countDown(45678);
+	countDown(0);
+	countDown(32);
+    }
+}

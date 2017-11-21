@@ -1,0 +1,137 @@
+/*
+Maggie Zhao
+APCS1 pd02
+HW15-- Wayne's World
+2017-10-11
+ */
+public class Coin
+{
+    // instance variables
+    private double value;
+          // monetary worth
+    private String upFace;
+          // face showing currently ("heads" or "tails")
+    public String name;
+          //  “penny”, “nickel”, etc
+    public int flipCtr;
+          // number of times this coin has been flipped
+    public int headsCtr;
+          // number of times this coin has landed heads-up
+    public int tailsCtr;
+          // number of times this coin has landed tails-up
+    public double bias;
+          // likelihood of landing heads-up every time (1.0) or tails-up every time (0.0)
+
+    // CONSTRUCTORS
+    public Coin() {
+	// default constructor: initializes instance vars to default vals
+	// precondition: none
+	// postcondition: instance vars have appropriate default vals
+	setBias();
+	setValue(0.05);
+	flip();
+	headsCtr = 0;
+	tailsCtr = 0;
+    }
+    public Coin( String denomination) {
+	// 1st overloaded constructor: allows caller to specify the denomination as a String input
+	// precondition: params are passed in a specific order
+	// instance vars have values specified by params
+	// demonination: names of the coins, i.e. cent, nickel, dime, quarter, half dollar, and dollar
+	this();
+	setName(denomination);
+	assignValue();
+    }
+    public Coin( String denomination, String face) {
+	// 2nd overloaded constructor: allows caller to specify the denomination and face of the coin, as a String input
+	// precondition: params are passed in a specific order
+	// instance vars have values specified by params
+	this();
+	setName(denomination);
+	assignValue();
+	setUpFace(face);
+    }
+
+    // mutators
+    public double setBias()
+    {
+	double oldBias;
+	bias = Math.random();
+	oldBias = bias;
+	return oldBias; 
+    }
+
+    public String setName(String newName){
+	String oldName = name;
+	name = newName;
+	return oldName;
+    }
+    public String setUpFace(String face){
+	String oldFace = upFace;
+	upFace = face;
+	return oldFace;
+    }
+    public double setValue(double newValue){
+	double oldValue = value;
+	value = newValue;
+	return oldValue;
+    }
+
+
+    // METHODS
+    public static void main (String [] args){
+    }
+    
+    public String flip(){
+	// simulates a coin flip. returns a a string ("heads" or "tails") with probability of getting heads determined by bias
+	if (bias <= 0.5) {
+	    upFace = "tails";
+	    tailsCtr += 1;
+	    }
+	else {
+	    upFace = "heads";
+	    headsCtr += 1;
+	} //end if statement
+	return upFace;
+    }// end flip()
+
+    public String toString()
+    {
+	// overloaded toString() method
+	// simple code so that the output will be [the name of the coin]--[face of the coin]
+	String reStr = name + "--" + upFace;
+	return reStr;
+    } // end toString
+    public double assignValue()
+    {
+	// assigns values to given names of coins. all 6 coins are included 
+	if (name == "penny"){
+	    value = 0.01;
+	}
+	if (name == "nickel"){
+	    value = 0.05;
+	}
+	if (name == "dime"){
+	    value = 0.10;
+	}
+	if (name == "quarter"){
+	    value = 0.25;
+	}
+	if (name == "half dollar"){
+	    value = 0.50;
+	}
+	if (name == "dollar"){
+	    value = 1.00;
+	}
+	return value;
+    }
+    public boolean equals(Coin other){
+	String compare = other.upFace;
+	if (upFace.equals(compare)){
+	    return true;
+	}
+	else {
+	    return false;
+	}
+    }// end equals()
+}// end class Coin

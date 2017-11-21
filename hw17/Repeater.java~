@@ -1,0 +1,34 @@
+/* 
+   Maggie Zhao
+   APCS1 pd02
+   HW17 -- 
+   2017-10-16 M
+*/
+
+public class Repeater {
+    //    private String reStr;
+    
+    public static void main (String [] args) {
+	System.out.println(fenceW(10));
+	System.out.println(fenceR(12));
+    }
+    public static String fenceW (int numPosts) {
+	    String reStr= "";
+	    while (numPosts > 1){
+		reStr += "|--";
+		numPosts -= 1;
+	    }
+	    reStr += "|";
+	    return reStr;
+    }
+    public static String fenceR (int numPosts) {
+	String reStr = "";
+	if (numPosts > 1) {
+		reStr += "|--" + fenceR((numPosts - 1));
+	    }
+	else {
+	    reStr += "|";
+	}
+	return reStr;
+    }
+}
