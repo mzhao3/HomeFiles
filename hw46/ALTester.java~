@@ -1,0 +1,29 @@
+// Maggie Zhao
+// APCS1 pd02
+// HW46-- Al<B> Sorted!. 
+
+import java.util.ArrayList;
+
+
+public class ALTester {
+
+
+    public static void populate (int[] a) {
+	//A static method to populate an existing array with randomly generated ints.
+	for (int x = 0; x < a.length; x += 1 ) {
+	    a[x] = (int)( Math.random() * 100) ;    
+	}
+	
+    }
+
+    public boolean sort (int[] a) {
+	
+    }
+    
+    public static void main(String[] args)
+    {
+	_data = new int[23];
+	populate(_data);
+	
+    }
+}
