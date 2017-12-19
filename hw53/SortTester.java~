@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+
+public class SortTester
+{
+    public static void main(String [] args) {
+
+	ArrayList<Integer> bestCaseBub = { 0, 3, 5, 8, 12, 65, 98};
+	MySorts.bubbleSort(bestCaseBub);
+
+	MySorts.bubbleSort(worstCaseBub);
+	
+	MySorts.selectionSort(bestCaseSel);
+    
+	MySorts.selectionSort(worstCaseSel);
+	
+	MySorts.insertionSort(bestCaseIns);
+	
+	MySorts.insertionSort(worstCaseIns)};
+    
+}
