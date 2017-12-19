@@ -1,3 +1,8 @@
+// Maggie Zhao
+// APCS1 pd02
+// HW56-- His Toe Grammar
+// 2017-12-18
+
 /*====================================================================
   An AP-style question, for practice:
   Write the StatPrinter class below. The StatPrinter Object receives an
@@ -55,26 +60,25 @@ public class StatPrinter {
     //  _frequency would be [0,0,3,2,0,1]
     public StatPrinter( ArrayList <Integer> data ) 
     { 
-	/* YOUR IMPLEMENTATION HERE */
-	_frequency = new ArrayList <Integer>(max(data));;
+	_frequency = new ArrayList <Integer>();
+	for (int h = 0; h < (max(data) + 1); h++) {
+	    _frequency.add(0);
+	} // using the highest value in data, increase the size of the _freq ArrayList by adding 0s.
 	for (int i = 0; i < data.size(); i++) {
-	    _frequency.set(i, (_frequency.get(i) + 1));
+	    _frequency.set(data.get(i), (_frequency.get(data.get(i)) + 1));
+	    // update the _freq list everytime a value occurs in data (the value in data is the index in _freq) 
 	}
-	    
-	
     }
-
-
+    
     //*************** QUESTION 01 **************************
     //precond:  data.size() > 0
     //postcond: returns largest integer in data
     public Integer max( ArrayList <Integer> data ) 
     { 
-	/* YOUR IMPLEMENTATION HERE */
-	int max = 0;
+	int max = data.get(0); // start off with the max as the first value
 	for (int x = 1; x < data.size(); x ++ ) {
-	    if (data.get(x).compareTo(data.get(x-1)) > 0 )
-		max = data.get(x);
+	    if (data.get(x).compareTo(max) > 0 ) // if a value in data is greater than 0,
+		max = data.get(x); // make max the larger value
 	}
 	return max;
     }
@@ -91,8 +95,8 @@ public class StatPrinter {
     //    isLocalMode(1) -> true
     //    isLocalMode(5) -> true
     public boolean isLocalMode( int i ) 
-    { 
-	/* YOUR IMPLEMENTATION HERE */
+    {
+	// If there is a value in frequency that is greater than the values before and after it, there is a local mode. The value cannot be the beginning or the end values.
 	boolean isMode = false;
 	if ( i > 0 && i < _frequency.size() - 1) {
 	    isMode = (_frequency.get( i - 1 ) < _frequency.get( i ) &&
@@ -107,12 +111,12 @@ public class StatPrinter {
     
     public ArrayList<Integer> getLocalModes() 
     {
-	/* YOUR IMPLEMENTATION HERE */
 	ArrayList <Integer> localModes = new ArrayList <Integer>();
+	// Takes the local mode and adds it to the ArrayList of local modes
 	for (int j = 0; j < _frequency.size() - 1; j ++) {
 	    if (_frequency.get( j - 1 ) < _frequency.get( j ) &&
 		_frequency.get( j + 1 ) < _frequency.get( j ) )
-
+	       
 		localModes.add(_frequency.get(j));
 	}
 	return localModes;
@@ -123,14 +127,15 @@ public class StatPrinter {
     //precond:  longestBar > 0
     public void printHistogram( int longestBar ) 
     {
-	/* YOUR IMPLEMENTATION HERE */ 
-	double ratio = (longestBar * 1.0) / max(_frequency) ;
-	for (int z = 0; z < _frequency.size(); z ++) {
-	    String s = x + " : ";
+	// ratio so that the highest frequency value is the longest bar
+	double ratio = (longestBar * 1.0) / max(_frequency) ; 
+	for (int z = 0; z < _frequency.size(); z ++) { //for each value in _freq
+	    String s = z + " : ";
 	    for (int a = 0; a < _frequency.get(z) * ratio ; a++) {
 		s += "*";
-	
+	    }
+	    System.out.println(s);
+	}
     }
- 
 }//end class StatPrinter
 

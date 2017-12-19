@@ -58,6 +58,7 @@ public class StatPrinter {
     //          _frequency.get(i) returns frequency of i in data
     //eg, for data [2,3,2,5,2,3]
     //  _frequency would be [0,0,3,2,0,1]
+    //execution time: O(n) - dependent on size of array, traversed once
     public StatPrinter( ArrayList <Integer> data ) 
     { 
 	_frequency = new ArrayList <Integer>();
@@ -73,6 +74,7 @@ public class StatPrinter {
     //*************** QUESTION 01 **************************
     //precond:  data.size() > 0
     //postcond: returns largest integer in data
+    //execution time: O(n) - dependent on size of array, traversed once
     public Integer max( ArrayList <Integer> data ) 
     { 
 	int max = data.get(0); // start off with the max as the first value
@@ -108,15 +110,13 @@ public class StatPrinter {
 
     //*************** QUESTION 04 **************************
     //postcond: returns list of modes in _frequency
-    
+    //execution time: O(n) - dependent on size of array, traversed once
     public ArrayList<Integer> getLocalModes() 
     {
 	ArrayList <Integer> localModes = new ArrayList <Integer>();
 	// Takes the local mode and adds it to the ArrayList of local modes
 	for (int j = 0; j < _frequency.size() - 1; j ++) {
-	    if (_frequency.get( j - 1 ) < _frequency.get( j ) &&
-		_frequency.get( j + 1 ) < _frequency.get( j ) )
-	       
+	    if (isLocalMode(j)
 		localModes.add(_frequency.get(j));
 	}
 	return localModes;
@@ -125,10 +125,11 @@ public class StatPrinter {
 
     //*************** QUESTION 05 **************************
     //precond:  longestBar > 0
+    //execution time: O(n^2) - goes through the frequency value for each element in the frequency ArrayList
     public void printHistogram( int longestBar ) 
     {
 	// ratio so that the highest frequency value is the longest bar
-	double ratio = (longestBar * 1.0) / max(_frequency) ; 
+	double ratio = int( (longestBar * 1.0) / max(_frequency)) ; 
 	for (int z = 0; z < _frequency.size(); z ++) { //for each value in _freq
 	    String s = z + " : ";
 	    for (int a = 0; a < _frequency.get(z) * ratio ; a++) {
@@ -138,4 +139,3 @@ public class StatPrinter {
 	}
     }
 }//end class StatPrinter
-
